@@ -1,0 +1,40 @@
+[
+	{
+		"model": "todo.list",
+		"pk": 1,
+		"fields": {
+			"name": "Plan in Coding"
+		}
+	},
+	{
+		"model": "todo.list",
+		"pk": 2,
+		"fields": {
+			"name": "Plan in Life"
+		}
+	},
+	{
+		"model": "todo.task",
+		"pk": 1,
+		"fields": {
+			"text": "Learn to make graphql backend with graphene & django",
+			"list": 1
+		}
+	},
+	{
+		"model": "todo.task",
+		"pk": 2,
+		"fields": {
+			"text": "Learn to make graphql frontend with apollo & react",
+			"list": 1
+		}
+	},
+	{
+		"model": "todo.task",
+		"pk": 3,
+		"fields": {
+			"text": "To be AWESOME c:",
+			"list": 2
+		}
+	}
+]
