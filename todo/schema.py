@@ -133,8 +133,35 @@ class UpdateTask(graphene.Mutation):
 		return UpdateTask(ok=ok, task=None)
 
 
+class DeleteMutation(graphene.Mutation):
+	class Arguments:
+		id = graphene.Int()
+
+	ok = graphene.Boolean()
+	_deletion_class = None
+
+	@classmethod
+	def mutate(cls, root, info, id):
+		ok = False
+
+		if cls._deletion_class and id:
+			cls._deletion_class.objects.get(pk=id).delete()
+			ok = True
+		return DeleteMutation(ok=ok)
+
+
+class DeleteList(DeleteMutation):
+	_deletion_class = List
+
+
+class DeleteTask(DeleteMutation):
+	_deletion_class = Task
+
+
 class Mutation(graphene.ObjectType):
 	create_list = CreateList.Field()
 	update_list = UpdateList.Field()
+	delete_list = DeleteList.Field()
 	create_task = CreateTask.Field()
 	update_task = UpdateTask.Field()
+	delete_task = DeleteTask.Field()
