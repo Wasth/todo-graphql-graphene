@@ -39,11 +39,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todo',
     'graphene_django',
+    'corsheaders',
 ]
 
 GRAPHENE = {
     'SCHEMA': 'todobackend.schema.schema'
 }
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:5000',
+    'https://localhost:5000',
+    'http://127.0.0.1:5000',
+    'https://127.0.0.1:5000',
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -53,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'todobackend.urls'

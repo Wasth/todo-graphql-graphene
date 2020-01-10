@@ -1,2 +1,3 @@
 django
 graphene_django
+django-cors-headers
